@@ -18,22 +18,31 @@ This project operationalizes a machine learning microservice using [kubernetes](
 * Upload a complete Github repo with CircleCI to indicate that your code has been tested
 
 ---
+### The Instructions Below Are for AWS Cloud9 Environment
 
 ## Clone the Project
+git@github.com:jorgeatcabo/MachineLearningMicroserviceAPI.git
+
+## Libraries to install
+* Hadolint:
+  sudo wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/download/v2.12.0/hadolint-Linux-x86_64
+  sudo chmod +x /bin/hadolint
+
+* Kubernetes(Minikube):
+  curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+  sudo install minikube-linux-amd64 /usr/local/bin/minikube
 
 
 ## Setup the Environment
 
 * Create a virtualenv with Python 3.7 and activate it. Refer to this link for help on specifying the Python version in the virtualenv. 
 ```bash
-python3 -m pip install --user virtualenv
-# You should have Python 3.7 available in your host. 
-# Check the Python path using `which python3`
-# Use a command similar to this one:
-python3 -m virtualenv --python=<path-to-Python3.7> .devops
-source .devops/bin/activate
+python3 -m venv ~/.devops
+source ~/.devops/bin/activate
 ```
 * Run `make install` to install the necessary dependencies
+
+
 
 ### Running `app.py`
 
