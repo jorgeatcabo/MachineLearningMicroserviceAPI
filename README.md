@@ -21,7 +21,9 @@ This project operationalizes a machine learning microservice using [kubernetes](
 ### The Instructions Below Are for AWS Cloud9 Environment
 
 ## Clone the Project
-git@github.com:jorgeatcabo/MachineLearningMicroserviceAPI.git
+```bash
+git clone git@github.com:jorgeatcabo/MachineLearningMicroserviceAPI.git
+```
 
 ## Libraries to install
 * Hadolint:
@@ -46,7 +48,13 @@ source ~/.devops/bin/activate
 ```
 * Run `make install` to install the necessary dependencies
 
-
+## Run Lint Checks
+This project also must pass two lint checks; hadolint checks the Dockerfile for errors and pylint checks the app.py source code for errors.
+In your terminal, type: make lint to run lint checks on the project code. If you haven’t changed any code, all requirements should be satisfied, and you should see a printed statement that rates your code (and prints out any additional comments):
+```bash
+------------------------------------
+Your code has been rated at 10.00/10
+```
 
 ### Running `app.py`
 
@@ -60,3 +68,6 @@ source ~/.devops/bin/activate
 * Setup and Configure Kubernetes locally
 * Create Flask app in Container
 * Run via kubectl
+
+### Troubleshooting
+* In general, you can verify installation by checking the version of a library, ex. `kubectl version`  or `docker --version`. If there is no package found, you may need to install that library.
