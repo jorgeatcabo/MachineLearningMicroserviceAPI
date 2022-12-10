@@ -115,7 +115,22 @@ To start a local cluster, type the terminal command: `minikube start`.
 After minikube starts, a cluster should be running locally. You can check that you have one cluster running by typing `kubectl config view` where you should see at least one cluster with a `certificate-authority` and `server`.
 
 ## Deploy with Kubernetes
-Now that you’ve uploaded a docker image and configured Kubernetes so that a cluster is running, you’ll be able to deploy your application on the Kubernetes cluster. This involves running your containerized application using kubectl, which is a command line interface for interacting with Kubernetes clusters.
+Now that you’ve uploaded a docker image and configured Kubernetes so that a cluster is running, you’ll be able to deploy your application on the Kubernetes cluster. This involves running your containerized application using `kubectl`, which is a command line interface for interacting with Kubernetes clusters.
+The `run_kubernetes.sh` contains the commands for deploying this application using `kubectl`.
+The steps will be somewhat similar to what you did in both `run_docker.sh` and `upload_docker.sh` but specific to kubernetes clusters:
+* `dockerpath=601360/app` Define a dockerpath which will be “/path”, this should be the same name as your uploaded repository (the same as in `upload_docker.sh`).
+* `kubectl run app --image=$dockerpath --port=80` Run the docker container with `kubectl`; you’ll have to specify the container and the port.
+* `kubectl get pods` List the kubernetes pods.
+* `kubectl port-forward app 8000:80` Forward the container port to a host port, using the same ports as before.
+* 
+call the script `./run_kubernetes.sh`. This assumes you have a local cluster configured and running. This script should create a pod with a name you specify and you may get an initial output with a cluster and status.
+
+Initially, your pod may be in the process of being created, as indicated by `STATUS: ContainerCreating`, but you just have to wait a few minutes until the pod is ready, then you can run the script again.
+
+Waiting: You can check on your pod’s status with a call to `kubectl get pod` and you should see the status change to `Running`. Then you can run the full `./run_kuberenets.sh` script again.
+
+## Make a prediction
+After you’ve called `run_kubernetes.sh`, and a pod is up and running, make a prediction using a separate terminal tab, and a call to `./make_prediction.sh`, as you did before.
 
 ### Running `app.py`
 
