@@ -61,10 +61,12 @@ The Dockerfile contains all the commands a user could call on the command line t
  * The `FROM` instruction initializes a new build stage and sets the base image for subsequent instructions. In this case, it specifies Python3 as the base image for this application.
  * `WORKDIR /app` specify a working directory.
  * `COPY . app.py /app/` Copy the `app.py` source code to that directory.
- * ```bash
+ * Install any dependencies in requirements.txt.
+ ```bash
   RUN pip install --no-cache-dir --upgrade pip &&\
     pip install --no-cache-dir --trusted-host pypi.python.org -r requirements.txt
-   ```
+ ```
+ 
 
 
 
