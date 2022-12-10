@@ -56,6 +56,18 @@ In your terminal, type: make lint to run lint checks on the project code. If you
 Your code has been rated at 10.00/10
 ```
 
+## Dockerfile
+The Dockerfile contains all the commands a user could call on the command line to assemble an image.
+ * The `FROM` instruction initializes a new build stage and sets the base image for subsequent instructions. In this case, it specifies Python3 as the base image for this application.
+ * `WORKDIR /app` specify a working directory.
+ * `COPY . app.py /app/` Copy the `app.py` source code to that directory.
+ * ```bash
+  RUN pip install --no-cache-dir --upgrade pip &&\
+    pip install --no-cache-dir --trusted-host pypi.python.org -r requirements.txt
+   ```
+
+
+
 ### Running `app.py`
 
 1. Standalone:  `python app.py`
