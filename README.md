@@ -106,6 +106,17 @@ docker tag app $dockerpath
 docker push $dockerpath
 ```
 
+Assuming you’ve already built the docker image with `./run_docker.sh`, you can now upload the image by calling the complete shell script `./upload_docker.sh`.
+
+If you’ve successfully implemented authentication and tagging, you should see a successful login statement and a repository name that you specified, printed in your terminal. You should also be able to see your image as a repository in your docker hub account.
+
+## Configure Kubernetes to Run Locally
+To start a local cluster, type the terminal command: `minikube start`.
+After minikube starts, a cluster should be running locally. You can check that you have one cluster running by typing `kubectl config view` where you should see at least one cluster with a `certificate-authority` and `server`.
+
+## Deploy with Kubernetes
+Now that you’ve uploaded a docker image and configured Kubernetes so that a cluster is running, you’ll be able to deploy your application on the Kubernetes cluster. This involves running your containerized application using kubectl, which is a command line interface for interacting with Kubernetes clusters.
+
 ### Running `app.py`
 
 1. Standalone:  `python app.py`
