@@ -25,12 +25,16 @@ git@github.com:jorgeatcabo/MachineLearningMicroserviceAPI.git
 
 ## Libraries to install
 * Hadolint:
-  sudo wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/download/v2.12.0/hadolint-Linux-x86_64
-  sudo chmod +x /bin/hadolint
+```bash
+sudo wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/download/v2.12.0/hadolint-Linux-x86_64
+sudo chmod +x /bin/hadolint
+```
 
 * Kubernetes(Minikube):
-  curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
-  sudo install minikube-linux-amd64 /usr/local/bin/minikube
+```bash
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+sudo install minikube-linux-amd64 /usr/local/bin/minikube
+```
 
 
 ## Setup the Environment
