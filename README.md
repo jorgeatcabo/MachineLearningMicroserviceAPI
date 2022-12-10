@@ -90,6 +90,21 @@ This shell script is responsible for sending some input data to your containeriz
 
 In the prediction window, you should see the value of the prediction, and in your main window, where it indicates that your application is running, you should see some log statements print out. You’ll see that it prints out the input payload at multiple steps; when it is JSON and when it’s been converted to a DataFrame and about to be scaled.
 
+After making a prediction, you can type CTRL+C (+enter) to quit running your application. You can always re-run it with a call to `./run_docker.sh`.
+
+## Upload the Docker Image
+Now that you’ve tested your containerized image locally, you’ll want to upload your built image to docker. This will make it accessible to a Kubernets cluster.
+The `upload_docker.sh` file contains the commands for uploading the Docekr image:
+* `dockerpath=601360/app` Define a `dockerpath` which will be “/path”; the path may be the same as the build tag you created in `run_docker.sh` or just some descriptive path name. Recall that your docker username is your unique docker ID.
+* Authenticate and tag image; this step is responsible for creating a login step and ensuring that the uploaded docker image is tagged descriptively.
+```bash
+docker login --username 601360
+docker tag app $dockerpath
+```
+* Similar to how you might push a change to a Github repository, push your docker image to the `dockerpath`. This push may take a moment to complete.
+```bash
+docker push $dockerpath
+```
 
 ### Running `app.py`
 
