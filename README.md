@@ -75,6 +75,21 @@ The `run_docker.sh` file contains all the commands to be able to get Docker runn
 * `docker image ls` List the created docker images (for logging purposes).
 * `docker run -p 8000:80 app` Run the containerized Flask app; publish the container’s port to a host port. The appropriate container and host ports are in the Dockerfile and `make_prediction.sh` files, respectively.
 
+## Running the complete script
+To run and build a docker image, you’ll type `./run_docker.sh`.
+After a brief waiting period, you should see messages indicating a successful build, along with some indications that your app is being served on port 80 (also, a warning about the development server is to be expected, here).
+```bash
+Successfully built <build id>
+Successfully tagged <your tag>
+```
+This indicates a successful build and if you keep this application running you can make predictions!
+
+## Making predictions
+Then, to make a prediction, you have to open a separate tab or terminal window. In this new window, navigate to the main project directory (some computers will do this automatically) and call `./make_prediction.sh`.
+This shell script is responsible for sending some input data to your containerized application via the appropriate port. Each numerical value in here represents some feature that is important for determining the price of a house in Boston. The source code is responsible for passing that data through a trained, machine learning model, and giving back a predicted value for the house price.
+
+In the prediction window, you should see the value of the prediction, and in your main window, where it indicates that your application is running, you should see some log statements print out. You’ll see that it prints out the input payload at multiple steps; when it is JSON and when it’s been converted to a DataFrame and about to be scaled.
+
 
 ### Running `app.py`
 
