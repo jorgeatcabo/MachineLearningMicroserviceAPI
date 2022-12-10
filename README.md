@@ -66,8 +66,14 @@ The Dockerfile contains all the commands a user could call on the command line t
   RUN pip install --no-cache-dir --upgrade pip &&\
     pip install --no-cache-dir --trusted-host pypi.python.org -r requirements.txt
  ```
- 
+After you complete this file and save it, it is recommended that you go back to your terminal and run `make lint` again to see if `hadolint` catches any errors in your Dockerfile.
 
+## Run a Container & Make a Prediction
+In order to run a containerized application, you’ll need to build and run the docker image that you defined in the `Dockerfile`, and then you should be able to test your application, locally, by having the containerized application accept some input data and produce a prediction about housing prices. `run_docker.sh`
+The `run_docker.sh` file contains all the commands to be able to get Docker running, locally.
+* `docker build --tag=app .` Build the docker image from the Dockerfile.
+* `docker image ls` List the created docker images (for logging purposes).
+* `docker run -p 8000:80 app` Run the containerized Flask app; publish the container’s port to a host port. The appropriate container and host ports are in the Dockerfile and `make_prediction.sh` files, respectively.
 
 
 ### Running `app.py`
